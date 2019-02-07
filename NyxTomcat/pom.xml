@@ -11,5 +11,13 @@
 
     <artifactId>NyxTomcat</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>Nyx</groupId>
+            <artifactId>NyxCommon</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

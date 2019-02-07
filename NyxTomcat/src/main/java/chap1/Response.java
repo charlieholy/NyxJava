@@ -27,8 +27,8 @@ public class Response {
                 fis = new FileInputStream(file);
                 int ch = fis.read(bytes, 0, BUFFER_SIZE);
                 while (ch!=-1) {
-                    String head = "HTTP/1.1 200 File Not Found\r\n" +
-                            "Content-Type: text/html\r\n" +
+                    String head = "HTTP/1.1 202 File Not Found\r\n" +
+                            //"Content-Type: text/html\r\n" +
                             "\r\n";
                     output.write(head.getBytes());
                     output.write(bytes, 0, ch);
