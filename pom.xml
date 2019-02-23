@@ -13,6 +13,8 @@
         <module>NyxSpring</module>
         <module>NyxTomcat</module>
         <module>NyxBi</module>
+        <module>NyxMybatis</module>
+        <module>MyxMyBatis</module>
     </modules>
 
 
