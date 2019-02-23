@@ -33,6 +33,17 @@ public class DaoEx {
 
         }catch (Exception e){
             e.printStackTrace();
+        }finally {
+            try {
+                if(stmt != null){
+                    stmt.close();
+                }
+                if(conn != null){
+                    conn.close();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }
