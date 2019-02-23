@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>This is SpringMVC Demo  mani</h1>
+
+welcom ${name}
 </body>
 </html>
