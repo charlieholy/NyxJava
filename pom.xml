@@ -12,9 +12,10 @@
         <module>NyxCommon</module>
         <module>NyxSpring</module>
         <module>NyxTomcat</module>
-        <module>NyxBi</module>
         <module>NyxMybatis</module>
         <module>MyxMyBatis</module>
+        <module>NyxSpringMvc</module>
+        <module>NyxWebApp</module>
     </modules>
 
 
