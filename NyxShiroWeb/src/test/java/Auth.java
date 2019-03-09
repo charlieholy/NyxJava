@@ -1,3 +1,4 @@
+import com.nyx.shiro.realm.CustomRealm;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.mgt.DefaultSecurityManager;
@@ -12,22 +13,25 @@ public class Auth {
 
     @Before
     public void addUser(){
-        simpleAccountRealm.addAccount("Mark","123456");
+        simpleAccountRealm.addAccount("Mark","123456","admin");
     }
+
+    CustomRealm customRealm = new CustomRealm();
 
     @Test
     public void testAuthtication(){
         //1.构建SecurityManager环境
         DefaultSecurityManager defaultSecurityManager = new DefaultSecurityManager();
-        defaultSecurityManager.setRealm(simpleAccountRealm);
+        defaultSecurityManager.setRealm(customRealm);
         //2 .主题提交认证请求
         SecurityUtils.setSecurityManager(defaultSecurityManager);
         Subject subject = SecurityUtils.getSubject();
 
-        UsernamePasswordToken token = new UsernamePasswordToken("Mark","123456");
+        UsernamePasswordToken token = new UsernamePasswordToken("Mark","1234565");
         subject.login(token);
 
 
-        System.out.println("isAuth: " + subject.isAuthenticated());
+        //System.out.println("isAuth: " + subject.isAuthenticated());
+        //subject.checkRoles("admin","role");
     }
 }
