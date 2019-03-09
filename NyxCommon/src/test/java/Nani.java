@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Nani {
     public enum BitOp{
         AND,OX;
@@ -8,6 +13,12 @@ public class Nani {
     }
 
     public static void main(String[] args) {
-        System.out.println();
+
+        List<String> ss = new ArrayList<>();
+        ss.add("a");
+        ss.add("b");
+        ss.add("a");
+        Set<String> sss = new HashSet<>(ss);
+        System.out.println(sss.size());
     }
 }

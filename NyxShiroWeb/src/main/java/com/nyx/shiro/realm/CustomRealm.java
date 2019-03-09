@@ -7,6 +7,8 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -17,7 +19,7 @@ public class CustomRealm extends AuthorizingRealm {
 
     Map<String,String> userMap = new HashMap<String, String>(16);
     {
-        userMap.put("Mark","123456");
+        userMap.put("Mark","fcea920f7412b5da7be0cf42b8c93759");
         super.setName("customRealm");
     }
 
@@ -45,21 +47,37 @@ public class CustomRealm extends AuthorizingRealm {
         return sets;
     }
 
+    private Set<String> getPermissionsByUserName(String username){
+        Set<String> sets = new HashSet<String>();
+        return sets;
+    }
+
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
 
         String userName = (String) principalCollection.getPrimaryPrincipal();
         Set<String> roles = getRolesByUserName(userName);
+        Set<String> permissions = getPermissionsByUserName(userName);
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        simpleAuthorizationInfo.setRoles(roles);
+        simpleAuthorizationInfo.setStringPermissions(permissions);
 
-        return null;
+        return simpleAuthorizationInfo;
     }
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         //1.从主体传过来的认证信息中，获取用户名
         String userName = (String)authenticationToken.getPrincipal();
+        String pp = new String((char[]) authenticationToken.getCredentials());
+        System.out.println(pp);
         String password = userMap.get(userName);
         SimpleAuthenticationInfo authenticationInfo =
                 new SimpleAuthenticationInfo("Mark",password,"customRealm");
 
         return authenticationInfo;
+    }
+
+    public static void main(String[] args) {
+        Md5Hash md5Hash = new Md5Hash("1234567");
+        System.out.println(md5Hash.toString());
     }
 }
