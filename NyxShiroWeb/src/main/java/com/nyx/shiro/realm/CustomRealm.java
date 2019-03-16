@@ -70,7 +70,7 @@ public class CustomRealm extends AuthorizingRealm {
         String userName = (String)authenticationToken.getPrincipal();
         String pp = new String((char[]) authenticationToken.getCredentials());
         System.out.println(pp);
-        String password = userMap.get(userName);
+        String password = getPasswordByUserName(userName);
         SimpleAuthenticationInfo authenticationInfo =
                 new SimpleAuthenticationInfo("Mark",password,"customRealm");
         authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes("Mark"));

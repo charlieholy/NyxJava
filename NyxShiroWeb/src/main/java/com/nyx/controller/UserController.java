@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserController {
 
-    @RequestMapping(value = "subLogin",method = RequestMethod.POST,
+    @RequestMapping(value = "/subLogin",method = RequestMethod.POST,
     produces = "application/json;charset=utf-8")
     @ResponseBody
     public String subLogin(User user){
@@ -26,5 +26,11 @@ public class UserController {
         }
 
         return "hello";
+    }
+
+    @RequestMapping(value = "/foo",method = RequestMethod.GET)
+    @ResponseBody
+    public String foo(){
+        return "n";
     }
 }
