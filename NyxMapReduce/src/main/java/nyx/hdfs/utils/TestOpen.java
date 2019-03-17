@@ -14,7 +14,7 @@ test1();
     }
     static void test1() throws IOException {
         FileSystem fs = HdfsUtil.getFileSystem();
-        InputStream is = fs.open(new Path("jjj.txt"));
+        InputStream is = fs.open(new Path("wordcount2/part-r-00000"));
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line = null;
         while ((line = br.readLine())!=null){
