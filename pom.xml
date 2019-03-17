@@ -17,6 +17,7 @@
         <module>NyxSpringMvc</module>
         <module>NyxWebApp</module>
         <module>NyxShiroWeb</module>
+        <module>NyxMapReduce</module>
     </modules>
 
 
